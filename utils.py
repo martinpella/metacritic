@@ -1,6 +1,8 @@
 import numpy as np, pandas as pd
 import matplotlib.pyplot as plt, seaborn as sns
 import itertools
+from scipy import sparse
+from bisect import bisect_left
 
 def plot_embeddings(red_term_doc, y_train, qty=1000):
     svd_pos = red_term_doc[y_train == 1]
@@ -33,3 +35,27 @@ def plot_confusion_matrix(cm, classes, normalize=False, title='Confusion matrix'
     plt.tight_layout()
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
+
+class lil2(sparse.lil_matrix):
+    def removecol(self,j):
+        if j < 0:
+            j += self.shape[1]
+
+        if j < 0 or j >= self.shape[1]:
+            raise IndexError('column index out of bounds')
+
+        rows = self.rows
+        data = self.data
+        for i in range(self.shape[0]):
+            pos = bisect_left(rows[i], j)
+            if pos == len(rows[i]):
+                continue
+            elif rows[i][pos] == j:
+                rows[i].pop(pos)
+                data[i].pop(pos)
+                if pos == len(rows[i]):
+                    continue
+            for pos2 in range(pos,len(rows[i])):
+                rows[i][pos2] -= 1
+
+        self._shape = (self._shape[0],self._shape[1]-1)
