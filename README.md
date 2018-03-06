@@ -12,3 +12,5 @@ A variety of analysis and visualizations are performed trying to answer differen
 
 ### 4 - Sentiment analysis
 Several experiments are run to create a sentiment analysis classifier based on reviews. The objective is to train an algorithm that given a new review can classify it in positive or negative.
+
+https://medium.com/@martinpella/naive-bayes-for-sentiment-analysis-49b37db18bf8
