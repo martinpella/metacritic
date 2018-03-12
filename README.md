@@ -14,3 +14,6 @@ A variety of analysis and visualizations are performed trying to answer differen
 Several experiments are run to create a sentiment analysis classifier based on reviews. The objective is to train an algorithm that given a new review can classify it in positive or negative.
 
 https://medium.com/@martinpella/naive-bayes-for-sentiment-analysis-49b37db18bf8
+
+## GitHub visualization error
+If GitHub have problems rendering a Jupyter Notebook ("Something went wrong. Reload?"), paste the link here: https://nbviewer.jupyter.org/ 
